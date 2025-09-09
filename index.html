@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TravelSphere — Tours • Travels • Catering • Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --brand: #0d6efd;
+            --brand-2: #6f42c1;
+        }
+
+        body {
+            scroll-behavior: smooth
+        }
+
+        .navbar-brand span {
+            color: var(--brand)
+        }
+
+        .hero {
+            height: 62vh
+        }
+
+        .hero .carousel-item {
+            height: 62vh
+        }
+
+        .hero .carousel-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(13, 110, 253, .55), rgba(111, 66, 193, .55))
+        }
+
+        .section-title {
+            letter-spacing: .4px
+        }
+
+        .card-badge {
+            position: absolute;
+            left: .75rem;
+            top: .75rem
+        }
+
+        .tag {
+            font-size: .75rem
+        }
+
+        .filter-chip {
+            cursor: pointer
+        }
+
+        .filter-chip.active {
+            background: var(--brand);
+            color: #fff
+        }
+
+        .shadow-soft {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .08)
+        }
+
+        .rounded-2xl {
+            border-radius: 1rem
+        }
+
+        .sticky-cta {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 1040
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+        <div class="container py-2">
+            <a class="navbar-brand fw-bold" href="#"><span>Travel</span>Sphere</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="nav" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="#tours">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#travels">Travels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#catering">Catering</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SLIDER (fully offline friendly using SVG data images) -->
+    <div id="hero" class="carousel slide hero" data-bs-ride="carousel" data-bs-interval="3500">
+        <div class="carousel-inner">
+            <div class="carousel-item active position-relative">
+                <img class="w-100 h-100 object-fit-cover" alt="Slide 1" id="slide-1" />
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <h1 class="fw-bold">Explore India Like Never Before</h1>
+                    <p>Handpicked tours, comfy travel, tasty catering & flawless events.</p>
+                    <a href="#tours" class="btn btn-light btn-lg">Browse Tours</a>
+                </div>
+            </div>
+            <div class="carousel-item position-relative">
+                <img class="w-100 h-100 object-fit-cover" alt="Slide 2" id="slide-2" />
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <h1 class="fw-bold">Seamless Travel Bookings</h1>
+                    <p>Flights, trains, buses & cabs — all in one place.</p>
+                    <a href="#travels" class="btn btn-light btn-lg">See Options</a>
+                </div>
+            </div>
+            <div class="carousel-item position-relative">
+                <img class="w-100 h-100 object-fit-cover" alt="Slide 3" id="slide-3" />
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <h1 class="fw-bold">Delicious Catering</h1>
+                    <p>Custom menus for weddings, parties & corporate events.</p>
+                    <a href="#catering" class="btn btn-light btn-lg">Explore Catering</a>
+                </div>
+            </div>
+            <div class="carousel-item position-relative">
+                <img class="w-100 h-100 object-fit-cover" alt="Slide 4" id="slide-4" />
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <h1 class="fw-bold">We Create Events That Shine</h1>
+                    <p>From décor to DJ — we’ve got it covered.</p>
+                    <a href="#events" class="btn btn-light btn-lg">View Events</a>
+                </div>
+            </div>
+            <div class="carousel-item position-relative">
+                <img class="w-100 h-100 object-fit-cover" alt="Slide 5" id="slide-5" />
+                <div class="overlay"></div>
+                <div class="carousel-caption">
+                    <h1 class="fw-bold">Best Deals & Offers</h1>
+                    <p>Save more with seasonal discounts and combos.</p>
+                    <a href="#offers" class="btn btn-light btn-lg">Grab Offers</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- OFFERS STRIP -->
+    <section id="offers" class="py-4 border-bottom">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <div class="p-3 rounded-2xl shadow-soft bg-white text-center">
+                        <div class="btn btn-outline-primary fw-bold">Monsoon Sale</div>
+                        <div>Up to 30% OFF</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-2xl shadow-soft bg-white text-center">
+                        <div class="btn btn-outline-secondary fw-bold">Early Bird</div>
+                        <div>Save extra ₹1500</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-2xl shadow-soft bg-white text-center">
+                        <div class="btn btn-outline-danger fw-bold">Combo Deals</div>
+                        <div>Tour + Hotel</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-2xl shadow-soft bg-white text-center">
+                        <div class="btn btn-outline-warning fw-bold">Student Offer</div>
+                        <div>Special Prices</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOURS -->
+    <section id="tours" class="py-5">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                <h2 class="section-title m-0 me-auto">Popular Tours</h2>
+                <div class="input-group w-auto">
+                    <input id="tourSearch" class="form-control" placeholder="Search tours (city, type, tag)" />
+                    <button class="btn btn-outline-secondary" id="clearSearch">Clear</button>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mb-3" id="tourChips"></div>
+            <div id="tourGrid" class="row g-4"></div>
+            <div class="text-center mt-4">
+                <button id="loadMoreTours" class="btn btn-outline-primary">Load more</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAVELS (Flights/Trains/Buses/Cabs/Hotels) -->
+    <section id="travels" class="py-5 bg-light border-top">
+        <div class="container">
+            <h2 class="section-title mb-4">Travel Services</h2>
+            <ul class="nav nav-pills mb-3" id="travelTabs" role="tablist">
+                <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="pill"
+                        data-bs-target="#tab-flights" type="button">Flights</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill"
+                        data-bs-target="#tab-trains" type="button">Trains</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill"
+                        data-bs-target="#tab-buses" type="button">Buses</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill"
+                        data-bs-target="#tab-cabs" type="button">Cabs</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill"
+                        data-bs-target="#tab-hotels" type="button">Hotels</button></li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab-flights" class="tab-pane fade show active">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft text-center">Domestic</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft text-center">International</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft text-center">Student fares</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft text-center">Group booking</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-trains" class="tab-pane fade">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">IRCTC assistance</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Tatkal support</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">PNR tracking</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-buses" class="tab-pane fade">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Volvo / AC Sleeper</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Intercity</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Pilgrimage routes</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-cabs" class="tab-pane fade">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Airport pickup</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Outstation</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Local sightseeing</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Tempo Traveller</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-hotels" class="tab-pane fade">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Budget stays</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">3★–5★ Hotels</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded-2xl shadow-soft">Resorts & Villas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATERING -->
+    <section id="catering" class="py-5">
+        <div class="container">
+            <div class="d-flex align-items-center mb-3">
+                <h2 class="me-auto section-title">Catering Services</h2>
+                <span class="badge text-bg-danger">Veg • Non-veg • Jain</span>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-soft rounded-2xl position-relative">
+                        <span class="badge text-bg-success card-badge">Popular</span>
+                        <img id="img-cat-1" alt="Catering 1" class="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title">Wedding Feast</h5>
+                            <p class="card-text">Grand buffet with live counters, desserts & beverages.</p>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge text-bg-secondary tag">live chaat</span>
+                                <span class="badge text-bg-secondary tag">tandoor</span>
+                                <span class="badge text-bg-secondary tag">dessert bar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-soft rounded-2xl position-relative">
+                        <span class="badge text-bg-warning card-badge">Trending</span>
+                        <img id="img-cat-2" alt="Catering 2" class="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title">Corporate Lunch</h5>
+                            <p class="card-text">Curated menus for seminars, meets and offsites.</p>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge text-bg-secondary tag">box meals</span>
+                                <span class="badge text-bg-secondary tag">buffet</span>
+                                <span class="badge text-bg-secondary tag">tea & snacks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-soft rounded-2xl position-relative">
+                        <span class="badge text-bg-primary card-badge">New</span>
+                        <img id="img-cat-3" alt="Catering 3" class="card-img-top" />
+                        <div class="card-body">
+                            <h5 class="card-title">Party Platters</h5>
+                            <p class="card-text">Perfect for birthdays & house parties. Customizable.</p>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge text-bg-secondary tag">starters</span>
+                                <span class="badge text-bg-secondary tag">main course</span>
+                                <span class="badge text-bg-secondary tag">cakes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" class="py-5 bg-light border-top">
+        <div class="container">
+            <h2 class="section-title mb-3">Events We Organize</h2>
+            <div id="eventGrid" class="row g-4"></div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Get in Touch</h2>
+                    <p class="text-muted">Tell us what you need — we’ll craft the perfect plan and call you back.</p>
+                    <form id="contactForm" class="p-3 bg-light rounded-2xl">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input name="name" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input name="phonenumber" type="tel" class="form-control" placeholder="Phone" required>
+                            </div>
+                            <div class="col-12">
+                                <input name="email" type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="col-12">
+                                <select name="address" class="form-select" required>
+                                    <option value="" selected>Select Service</option>
+                                    <option value="Tours">Tours</option>
+                                    <option value="Travels">Travels</option>
+                                    <option value="Catering">Catering</option>
+                                    <option value="Events">Events</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <textarea name="remarks" class="form-control" rows="3"
+                                    placeholder="Your message…"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4 rounded-2xl bg-white shadow-soft h-100">
+                        <h5 class="mb-3">Why TravelSphere?</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">✔ 50+ curated tour packages</li>
+                            <li class="mb-2">✔ Door-to-door travel assistance</li>
+                            <li class="mb-2">✔ FSSAI-certified catering team</li>
+                            <li class="mb-2">✔ End-to-end event management</li>
+                        </ul>
+                        <hr>
+                        <p class="m-0 small text-muted">*Backend will be integrated later — forms currently show a
+                            success toast.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Google Map Embed -->
+            <div class="mt-5 rounded-2xl overflow-hidden shadow-soft">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019927927927!2d-122.4194154846813!3d37.77492977975944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5b1a1a1b%3A0x4a1a1a1a1a1a1a1a!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sin!4v1695830400000!5m2!1sen!2sin"
+                    width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-4 bg-dark text-white text-center">
+        <div class="container">
+            <div class="mb-2">© <span id="yr"></span> TravelSphere. All rights reserved.</div>
+            <div class="small">Made with ❤ for your project demo.</div>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA -->
+    <div class="sticky-cta">
+        <a href="#contact" class="btn btn-lg btn-primary shadow-lg rounded-pill">Get Quote</a>
+    </div>
+
+    <!-- DETAILS MODAL -->
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailTitle">Package Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="detailImg" class="w-100 rounded mb-3" alt="detail image" />
+                    <p id="detailDesc" class="mb-2"></p>
+                    <div id="detailTags" class="d-flex flex-wrap gap-2 mb-3"></div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div><span class="badge text-bg-success" id="detailPrice"></span></div>
+                        <button class="btn btn-primary">Book (coming soon)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index:1100">
+        <div id="toast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Thanks! We’ll reach out shortly.</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /* UTIL: Offline-friendly SVG data image generator */
+        function svgDataUrl(w, h, text, bg = "#e9ecef", fg = "#212529") {
+            const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'>` +
+                `<defs><style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600');</style></defs>` +
+                `<rect width='100%' height='100%' fill='${bg}'/>` +
+                `<text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='${fg}' font-size='22' font-family='Inter,Arial,sans-serif'>${text}</text>` +
+                `</svg>`; return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`
+        }
+
+        // Slides
+        document.getElementById('slide-1').src = svgDataUrl(1600, 720, 'Incredible India — Tours');
+        document.getElementById('slide-2').src = svgDataUrl(1600, 720, 'Hassle-free Travels');
+        document.getElementById('slide-3').src = svgDataUrl(1600, 720, 'Delicious Catering');
+        document.getElementById('slide-4').src = svgDataUrl(1600, 720, 'Events & Celebrations');
+        document.getElementById('slide-5').src = svgDataUrl(1600, 720, 'Hot Deals & Offers');
+
+        // Catering images
+        ['img-cat-1', 'img-cat-2', 'img-cat-3'].forEach((id, i) => {
+            document.getElementById(id).src = svgDataUrl(1200, 700, `Catering ${i + 1}`)
+        })
+
+        // Year
+        document.getElementById('yr').textContent = new Date().getFullYear()
+
+        // Data — easy to expand later or feed from backend
+        const TOURS = [
+            { id: 1, title: 'Goa Beach Escape', city: 'Goa', price: '₹12,999', desc: '3N/4D • Beach resort • Cruise dinner', tags: ['beach', 'party', 'couple'], img: svgDataUrl(1000, 650, 'Goa Beach') },
+            { id: 2, title: 'Manali Adventure', city: 'Manali', price: '₹14,499', desc: '4N/5D • Snow & trek • Solang Valley', tags: ['mountain', 'adventure', 'family'], img: svgDataUrl(1000, 650, 'Manali') },
+            { id: 3, title: 'Jaipur Heritage Walk', city: 'Jaipur', price: '₹9,999', desc: '2N/3D • Forts & palaces • Local food', tags: ['heritage', 'culture'], img: svgDataUrl(1000, 650, 'Jaipur') },
+            { id: 4, title: 'Kashmir Heaven', city: 'Srinagar', price: '₹18,999', desc: '4N/5D • Gulmarg • Pahalgam • Houseboat', tags: ['snow', 'scenic', 'family'], img: svgDataUrl(1000, 650, 'Kashmir') },
+            { id: 5, title: 'Andaman Blue', city: 'Port Blair', price: '₹22,499', desc: '4N/5D • Havelock • Scuba • Beaches', tags: ['island', 'water', 'honeymoon'], img: svgDataUrl(1000, 650, 'Andaman') },
+            { id: 6, title: 'Rann of Kutch White', city: 'Kutch', price: '₹10,499', desc: '2N/3D • White desert • Cultural fest', tags: ['festival', 'culture'], img: svgDataUrl(1000, 650, 'Kutch') },
+            { id: 7, title: 'Kerala Backwaters', city: 'Alleppey', price: '₹16,999', desc: '3N/4D • Houseboat • Ayurveda', tags: ['nature', 'relax'], img: svgDataUrl(1000, 650, 'Kerala') },
+            { id: 8, title: 'Leh–Ladakh Roadtrip', city: 'Leh', price: '₹29,999', desc: '6N/7D • Pangong • Nubra • Khardungla', tags: ['roadtrip', 'adventure'], img: svgDataUrl(1000, 650, 'Ladakh') },
+            { id: 9, title: 'Varanasi Spiritual', city: 'Varanasi', price: '₹8,999', desc: '2N/3D • Ganga Aarti • Ghats tour', tags: ['spiritual', 'heritage'], img: svgDataUrl(1000, 650, 'Varanasi') },
+            { id: 10, title: 'Meghalaya Caves & Falls', city: 'Shillong', price: '₹17,999', desc: '4N/5D • Cherrapunji • Dawki', tags: ['waterfalls', 'nature'], img: svgDataUrl(1000, 650, 'Meghalaya') }
+        ]
+
+        const EVENTS = [
+            { title: 'Royal Wedding', tags: ['wedding', 'decor', 'dj'], img: svgDataUrl(900, 560, 'Wedding') },
+            { title: 'Corporate Annual Day', tags: ['stage', 'av', 'conference'], img: svgDataUrl(900, 560, 'Corporate') },
+            { title: 'Birthday Bash', tags: ['birthday', 'kids', 'theme'], img: svgDataUrl(900, 560, 'Birthday') },
+            { title: 'Sangeet & Mehendi', tags: ['sangeet', 'dance'], img: svgDataUrl(900, 560, 'Sangeet') },
+            { title: 'College Fest', tags: ['concert', 'lights'], img: svgDataUrl(900, 560, 'College Fest') },
+            { title: 'Product Launch', tags: ['launch', 'branding'], img: svgDataUrl(900, 560, 'Launch') }
+        ]
+
+        // Chips = distinct tags
+        const allTags = [...new Set(TOURS.flatMap(t => t.tags))]
+        const chipsEl = document.getElementById('tourChips')
+        allTags.forEach(tag => {
+            const b = document.createElement('span')
+            b.className = 'badge rounded-pill text-bg-light filter-chip'
+            b.textContent = tag
+            b.dataset.tag = tag
+            chipsEl.appendChild(b)
+        })
+
+        // Render tours with pagination
+        let PAGE = 1, PER = 6, activeTags = new Set(), q = ''
+        const grid = document.getElementById('tourGrid')
+
+        function matches(t) {
+            const byTag = activeTags.size ? t.tags.some(x => activeTags.has(x)) : true
+            const byQ = q ? (t.title + " " + t.city + " " + t.tags.join(' ')).toLowerCase().includes(q) : true
+            return byTag && byQ
+        }
+
+        function card(t) {
+            const col = document.createElement('div'); col.className = 'col-sm-6 col-lg-4'
+            col.innerHTML = `
+        <div class="card h-100 shadow-soft rounded-2xl position-relative">
+          <span class="badge text-bg-primary card-badge">${t.city}</span>
+          <img src="${t.img}" alt="${t.title}" class="card-img-top">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${t.title}</h5>
+            <p class="text-muted small flex-grow-1">${t.desc}</p>
+            <div class="d-flex gap-2 flex-wrap mb-2">${t.tags.map(x => `<span class='badge text-bg-secondary tag'>${x}</span>`).join('')}</div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge text-bg-success">${t.price}</span>
+              <button class="btn btn-outline-primary btn-sm" data-id="${t.id}" data-bs-toggle="modal" data-bs-target="#detailModal">Details</button>
+            </div>
+          </div>
+        </div>`
+            return col
+        }
+
+        function render() {
+            grid.innerHTML = ''
+            const filtered = TOURS.filter(matches)
+            const items = filtered.slice(0, PAGE * PER)
+            items.forEach(t => grid.appendChild(card(t)))
+            document.getElementById('loadMoreTours').style.display = (PAGE * PER < filtered.length) ? 'inline-block' : 'none'
+        }
+
+        render()
+
+        // Load more
+        document.getElementById('loadMoreTours').addEventListener('click', () => { PAGE++; render() })
+
+        // Search
+        const search = document.getElementById('tourSearch')
+        search.addEventListener('input', () => { q = search.value.trim().toLowerCase(); PAGE = 1; render() })
+        document.getElementById('clearSearch').addEventListener('click', () => { search.value = ''; q = ''; PAGE = 1; render() })
+
+        // Chip filters
+        chipsEl.addEventListener('click', (e) => {
+            const el = e.target.closest('.filter-chip'); if (!el) return
+            const tag = el.dataset.tag
+            if (activeTags.has(tag)) { activeTags.delete(tag); el.classList.remove('active') }
+            else { activeTags.add(tag); el.classList.add('active') }
+            PAGE = 1; render()
+        })
+
+        // Details modal
+        const detailModal = document.getElementById('detailModal')
+        detailModal.addEventListener('show.bs.modal', (e) => {
+            const id = +e.relatedTarget.dataset.id
+            const t = TOURS.find(x => x.id === id)
+            document.getElementById('detailTitle').textContent = t.title
+            document.getElementById('detailImg').src = t.img
+            document.getElementById('detailDesc').textContent = t.desc
+            document.getElementById('detailPrice').textContent = t.price
+            const tags = document.getElementById('detailTags'); tags.innerHTML = '';
+            t.tags.forEach(x => { const s = document.createElement('span'); s.className = 'badge text-bg-secondary'; s.textContent = x; tags.appendChild(s) })
+        })
+
+        // Events grid
+        const eventGrid = document.getElementById('eventGrid')
+        EVENTS.forEach(ev => {
+            const col = document.createElement('div'); col.className = 'col-sm-6 col-lg-4'
+            col.innerHTML = `
+        <div class="card h-100 shadow-soft rounded-2xl">
+          <img src="${ev.img}" alt="${ev.title}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">${ev.title}</h5>
+            <div class="d-flex gap-2 flex-wrap">${ev.tags.map(x => `<span class='badge text-bg-secondary tag'>${x}</span>`).join('')}</div>
+          </div>
+        </div>`
+            eventGrid.appendChild(col)
+        })
+
+        // Contact form toast (mock submit)
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const toast = new bootstrap.Toast(document.getElementById('toast'))
+            toast.show()
+        })
+    </script>
+
+
+    <script>
+
+
+    </script>
+    <script>
+        const BASE_URL = "http://localhost:3000"
+        const form = document.getElementById('contactForm');
+        console.log('this is data',form)
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            try {
+                const response = await fetch(BASE_URL + '/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message || 'Form submitted successfully!');
+                    form.reset();
+                } else {
+                    alert(result.error || 'Error submitting form');
+                }
+            } catch (error) {
+                alert('Network error: ' + error.message);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
