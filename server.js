@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 const cors = require('cors');
 
-const allowedOrigins = ['http://127.0.0.1:5500', 'http://localhost:5500'];
+const allowedOrigins = ['http://127.0.0.1:5501', 'http://localhost:5501'];
 
 app.use(cors({
   origin: function(origin, callback) {
@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',      
+    password: 'harsh',      
     database: 'tour' 
 });
 
@@ -48,8 +48,8 @@ app.post('/api/submit', (req, res) => {
         return res.status(400).json({ error: 'Name and email are required' });
     }
 
-    const query = 'INSERT INTO users (name, email,number,remarks,address) VALUES (?, ?,?,?,?)';
-    db.query(query, [name, email, phonenumber, remarks, address], (err, result) => {
+    const query = 'INSERT INTO users (name, number,address,email,remark) VALUES (?, ?,?,?,?)';
+    db.query(query, [name, phonenumber, address, email,remarks], (err, result) => {
         if (err) {
             console.error('DB insert error:', err);
             return res.status(500).json({ error: 'Database error' });
@@ -58,11 +58,10 @@ app.post('/api/submit', (req, res) => {
     });
 });
 
-
-
 app.get('/api', (req, res) => {
     res.json("api run successfully");
 });
+
 
 
 app.listen(port, () => {
